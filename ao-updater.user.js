@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                    AO-Updater
 // @namespace               wyvern
-// @version                 0.9.0
+// @version                 0.9.1
 // @author                  Azathoth
 // @description             Updates AO stuff (IPBoard)
 // @copyright               more like copyleft miright
@@ -100,6 +100,7 @@ function updateThreadEnd() {
 
 	if (has_new) {
 		var num_new = new_dom.getElementsByClassName("post_block").length;
+		window.blur();
 		favicon.change(notif_favicon);
 		modifyReplyButton(new_dom);
 		addPosts(num_posts % 20);
