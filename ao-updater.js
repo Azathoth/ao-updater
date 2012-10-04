@@ -312,8 +312,8 @@ function htmlToBb(html) {
     html = html.replace(/<span style="font-family: ([0-9A-Za-z\s\-]*)">(.*)<\/span>/g, "[font=\"$1\"]$2[/font]"); // font
     html = html.replace(/<a href="(.*?)" class="bbc_url" title="External link" rel="nofollow">((.|\n)*?)<\/a>/g, "[url=\"$1\"]$2[/url]"); // url
     html = html.replace(/<img src="(.*?)" alt="Posted Image" class="bbc_img">/g, "[img]$1[/img]"); // img
-    html = html.replace(/<div class="bbc_spoiler">\n\t(.|\n)*?class="bbc_spoiler_content" style="display:none;">((.|\n)*?)<\/div><\/div>\n<\/div>/g, "[spoiler]$2[/spoiler]" ); // spoiler
-    
+    html = html.replace(/<div( id="")? class="bbc_spoiler">\n\t(.|\n)*?class="bbc_spoiler_content" style=("display:none;"|"")>((.|\n)*?)<\/div><\/div>\n<\/div>/g, "[spoiler]$4[/spoiler]" ); // spoiler
+ 
     // Remove linebreaks
     html = html.replace(/<br>/g, "");
     
