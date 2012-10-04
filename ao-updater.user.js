@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                    AO-Updater
 // @namespace               wyvern
-// @version                 0.9.0
+// @version                 0.9.1
 // @author                  Azathoth
 // @description             Updates AO stuff (IPBoard)
 // @copyright               more like copyleft miright
@@ -43,7 +43,7 @@ function init() {
 
 	if (type == "thread") {
 		window.addEventListener('focus', function() { favicon.change(def_favicon); });
-
+		window.addEventListener('blur', function() { favicon.change(def_favicon); });
 		main_ticker = new ticker();
 		modifyReplyButton(document);
 		//modifyQRPostButton();
