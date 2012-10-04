@@ -9,6 +9,7 @@
 // @include                 http://forums.atlusonline.com/*
 // @include                 https://forums.atlusonline.com/*
 // @updateURL               https://raw.github.com/Azathoth/ao-updater/master/ao-updater.js
+// @downloadURL             https://raw.github.com/Azathoth/ao-updater/master/ao-updater.js
 // @run-at                  document-end
 // ==/UserScript==
 
