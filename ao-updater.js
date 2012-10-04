@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name                    AO-Updater
 // @namespace               wyvern
-// @version                 0.7.8
+// @version                 0.7.9
 // @author                  Azathoth
 // @description             Updates AO stuff (IPBoard)
 // @copyright               more like copyleft miright
 // @license                 WTFPL <http://sam.zoy.org/wtfpl/COPYING>
 // @include                 http://forums.atlusonline.com/*
 // @include                 https://forums.atlusonline.com/*
-// @updateURL               https://userscripts.org/scripts/source/145068.user.js
+// @updateURL               https://raw.github.com/Azathoth/ao-updater/master/ao-updater.js
 // @run-at                  document-end
 // ==/UserScript==
 
