@@ -1,7 +1,7 @@
 ao-updater
 ==========
 
-v0.7.8
+v0.8.0
 
 Atlus Online (and IPBoard) seem like they're eons in the dust
 compared with how a forum should function. So, I'm upgrading it

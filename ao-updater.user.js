@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                    AO-Updater
 // @namespace               wyvern
-// @version                 0.7.9
+// @version                 0.8.0
 // @author                  Azathoth
 // @description             Updates AO stuff (IPBoard)
 // @copyright               more like copyleft miright
@@ -314,7 +314,7 @@ function htmlToBb(html) {
     html = html.replace(/<a href="(.*?)" class="bbc_url" title="External link" rel="nofollow">((.|\n)*?)<\/a>/g, "[url=\"$1\"]$2[/url]"); // url
     html = html.replace(/<img src="(.*?)" alt="Posted Image" class="bbc_img">/g, "[img]$1[/img]"); // img
     html = html.replace(/<div( id="")? class="bbc_spoiler">\n\t(.|\n)*?class="bbc_spoiler_content" style=("display:none;"|"")>((.|\n)*?)<\/div><\/div>\n<\/div>/g, "[spoiler]$4[/spoiler]" ); // spoiler
-    html = html.replace(/<ul class="bbc">((.|\n)*?)<\/ul>/g, "[list]$2[/list]"); //list
+    html = html.replace(/<ul class="bbc">((.|\n)*?)<\/ul>/g, "[list]$1[/list]"); //list
     html = html.replace(/<li>(.*?)<\/li>/g, "[*]$1\n"); //list item
  
     // Remove linebreaks
