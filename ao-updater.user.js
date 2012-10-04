@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                    AO-Updater
 // @namespace               wyvern
-// @version                 0.8.0
+// @version                 0.9.0
 // @author                  Azathoth
 // @description             Updates AO stuff (IPBoard)
 // @copyright               more like copyleft miright
@@ -27,6 +27,9 @@ var num_posts;
 var main_ticker;
 var prefs;
 
+var def_favicon = "http://chantale.r00t.la:8080/files/images/aoLight.png";
+var notif_favicon = "http://chantale.r00t.la:8080/files/images/aoDark.png";
+
 function init() {
 	console.log("init()");
 	
@@ -34,9 +37,13 @@ function init() {
 	
 	prefs = getPrefs();
 
+	favicon.change(def_favicon);
+
 	var type = getType(document.URL);
 
 	if (type == "thread") {
+		window.addEventListener('focus', function() { favicon.change(def_favicon); });
+
 		main_ticker = new ticker();
 		modifyReplyButton(document);
 		//modifyQRPostButton();
@@ -93,6 +100,7 @@ function updateThreadEnd() {
 
 	if (has_new) {
 		var num_new = new_dom.getElementsByClassName("post_block").length;
+		favicon.change(notif_favicon);
 		modifyReplyButton(new_dom);
 		addPosts(num_posts % 20);
 		num_posts += num_new - (num_posts % 20);
@@ -491,10 +499,10 @@ function ticker() {
 		this.divider = this.leftcont.appendChild(document.createElement("span"));
 		this.posts = this.leftcont.appendChild(document.createElement("span"));
 		this.settingsform = this.rightcont.appendChild(document.createElement("form"));
-        this.intsetting = this.settingsform.appendChild(document.createElement("input"));
-        this.intsetting.setAttribute("type", "text");
-        this.intsetting.setAttribute("size", "1");
-        this.intsetting.setAttribute("maxlength", "3");
+    this.intsetting = this.settingsform.appendChild(document.createElement("input"));
+    this.intsetting.setAttribute("type", "text");
+    this.intsetting.setAttribute("size", "1");
+    this.intsetting.setAttribute("maxlength", "3");
 
 		this.timer.setAttribute("id", "ticker_timer");
 		this.divider.setAttribute("id", "ticker_divider");
@@ -525,15 +533,15 @@ function ticker() {
 		this.leftcont.style.borderStyle = "solid";
 		this.leftcont.style.display = "inline";
 
-        this.settingsform.setAttribute("onSubmit", "window.location.reload(); return false;");
+    this.settingsform.setAttribute("onSubmit", "window.location.reload(); return false;");
 
-        this.intsetting.style.backgroundColor = "#FFFFFF";
-        this.intsetting.style.borderStyle = "inset";
-        this.intsetting.style.borderColor = "#000000";
-        this.intsetting.style.borderWidth = "0px";
-        this.intsetting.style.fontSize = "1em";
-        this.intsetting.style.color = "#000000";
-        this.intsetting.style.textAlign = "center";
+    this.intsetting.style.backgroundColor = "#FFFFFF";
+    this.intsetting.style.borderStyle = "inset";
+    this.intsetting.style.borderColor = "#000000";
+    this.intsetting.style.borderWidth = "0px";
+    this.intsetting.style.fontSize = "1em";
+    this.intsetting.style.color = "#000000";
+    this.intsetting.style.textAlign = "center";
 		this.intsetting.value = this.interval;
 		this.intsetting.onkeyup = setUserInterval;
 
@@ -542,5 +550,39 @@ function ticker() {
 	}
 
 }
+
+var favicon = {
+ 
+change: function(iconURL) {
+ 	if (arguments.length==2) {
+   	document.title = optionalDocTitle;
+ 	}
+ 	this.addLink(iconURL, "icon");
+ 	this.addLink(iconURL, "shortcut icon");
+},
+ 
+addLink: function(iconURL, relValue) {
+ 	var link = document.createElement("link");
+ 	link.type = "image/x-icon";
+ 	link.rel = relValue;
+ 	link.href = iconURL;
+ 	this.removeLinkIfExists(relValue);
+ 	this.docHead.appendChild(link);
+},
+ 
+removeLinkIfExists: function(relValue) {
+ 	var links = this.docHead.getElementsByTagName("link");
+ 	for (var i=0; i < links .length; i++) {
+   	var link = links[i];
+   	if (link.type=="image/x-icon" && link.rel==relValue) {
+     	this.docHead.removeChild(link);
+     	return; // Assuming only one match at most.
+   	}
+ 	}
+},
+ 
+	docHead:document.getElementsByTagName("head")[0]
+} 
+
 
 init();

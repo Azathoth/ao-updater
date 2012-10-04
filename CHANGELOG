@@ -6,3 +6,7 @@ v0.8.0 (04/10/12)
 -----------------
 + Fixed quoting on list items
 + Fixed quoting on lists
+
+v0.9.0 (04/10/12)
+-----------------
++ Added dynamic favicon for notification
