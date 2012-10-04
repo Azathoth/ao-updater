@@ -18,6 +18,10 @@ total number of new posts pulled to the current page. The one on
 the right is actually in a text box. Change the number and hit enter
 to change the refresh timing.
 
+I've also changed the favicon from the default IPBoard icon (favicon
+courtesy of Kinky). Once the updater pulls a new message, the favicon
+will change to alert you.
+
 Script is still in beta. Don't be surprised when things don't work.
 If they don't work, please do submit it as a bug on the AO thread.
 Or, if you want to be really generous, fix the bug yourself, and
